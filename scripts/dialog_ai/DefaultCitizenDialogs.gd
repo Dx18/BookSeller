@@ -147,7 +147,9 @@ class ConditionalRejectState extends DialogState:
 	
 	func init(data: DialogSharedData):
 		init_state(
-			RandomUtils.choose_one(QUESTIONS, data.user_data.random),
+			create_question(
+				data.user_data.random, data.user_data.preferred_genres
+			),
 			[RandomUtils.choose_one(ANSWERS, data.user_data.random)]
 		)
 	
