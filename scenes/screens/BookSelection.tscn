@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://themes/default.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/scenes/BookSelectionScene.gd" type="Script" id=2]
+
+[node name="BookSelection" type="CanvasLayer"]
+script = ExtResource( 2 )
+books_to_select = 3
+book_info_label_ = NodePath("BookInfo")
+progress_label_ = NodePath("SelectionProgress")
+
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.2
+theme = ExtResource( 1 )
+theme_type_variation = "LargeLabel"
+text = "Select books to sell!"
+align = 1
+valign = 1
+
+[node name="BookInfo" type="Label" parent="."]
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.8
+theme = ExtResource( 1 )
+text = "Title: (title)
+Genre: (genre)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="SelectionProgress" type="Label" parent="."]
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 0.9
+theme = ExtResource( 1 )
+text = "(number)/(total number)"
+align = 1
+valign = 1
+__meta__ = {
+"_editor_description_": "	"
+}
+
+[node name="Help" type="Label" parent="."]
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+text = "Enter to accept, Space to reject"
+align = 1
+valign = 1

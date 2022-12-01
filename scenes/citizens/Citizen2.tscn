@@ -1,0 +1,115 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://scripts/Citizen.gd" type="Script" id=1]
+[ext_resource path="res://textures/entities.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 2 )
+region = Rect2( 144, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 2 )
+region = Rect2( 160, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 2 )
+region = Rect2( 176, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 2 )
+region = Rect2( 144, 32, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 2 )
+region = Rect2( 144, 64, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 2 )
+region = Rect2( 160, 32, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 2 )
+region = Rect2( 160, 64, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 2 )
+region = Rect2( 176, 32, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 2 )
+region = Rect2( 176, 64, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 32, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 64, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=31]
+animations = [ {
+"frames": [ SubResource( 32 ) ],
+"loop": true,
+"name": "idle_down",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 33 ) ],
+"loop": true,
+"name": "idle_left",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 34 ) ],
+"loop": true,
+"name": "idle_right",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 35 ) ],
+"loop": true,
+"name": "idle_up",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 36 ), SubResource( 37 ) ],
+"loop": true,
+"name": "running_down",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 38 ), SubResource( 39 ) ],
+"loop": true,
+"name": "running_left",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 40 ), SubResource( 41 ) ],
+"loop": true,
+"name": "running_right",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 42 ), SubResource( 43 ) ],
+"loop": true,
+"name": "running_up",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=19]
+radius = 2.0
+
+[node name="Citizen" type="KinematicBody2D" groups=["interactable"]]
+collision_layer = 2
+collision_mask = 0
+collision/safe_margin = 0.001
+script = ExtResource( 1 )
+move_speed = 30.0
+sprite_ = NodePath("Sprite")
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -12 )
+frames = SubResource( 31 )
+animation = "running_left"
+playing = true
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource( 19 )

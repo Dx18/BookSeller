@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://textures/objects.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Tree.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 7.07107
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 34, 36 )
+
+[node name="Tree" type="StaticBody2D"]
+script = ExtResource( 2 )
+hide_transparency = 0.3
+sprite_ = NodePath("Sprite")
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 80, 80 )
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="BoundsArea" type="Area2D" parent="."]
+
+[node name="BoundsShape" type="CollisionShape2D" parent="BoundsArea"]
+position = Vector2( 0, -36 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="BoundsArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="BoundsArea" to="." method="_on_body_exited"]
